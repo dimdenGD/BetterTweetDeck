@@ -31,16 +31,3 @@ jobs:
 
       - name: Typecheck + lint
         run: npm test
-
-      # Runs a set of commands using the runners shell
-      - name: Publish unlisted addon to AMO
-        env:
-          FIREFOX_BETA_ID: ${{ secrets.FIREFOX_BETA_ID }}
-          AMO_API_KEY: ${{ secrets.AMO_API_KEY }}
-          AMO_API_SECRET: ${{ secrets.AMO_API_SECRET }}
-          NIGHTLY_DISCORD_WEBHOOK_TOKEN: ${{ secrets.NIGHTLY_DISCORD_WEBHOOK_TOKEN }}
-          NIGHTLY_DISCORD_WEBHOOK_ID: ${{ secrets.NIGHTLY_DISCORD_WEBHOOK_ID }}
-          NIGHTLY_DISCORD_ROLE_ID: ${{ secrets.NIGHTLY_DISCORD_ROLE_ID }}
-          NIGHTLY_TENOR_API_KEY: ${{ secrets.NIGHTLY_TENOR_API_KEY }}
-          NIGHTLY_GIPHY_API_KEY: ${{ secrets.NIGHTLY_GIPHY_API_KEY }}
-        run: npm run build:firefox-beta && npx web-ext sign --api-key="$AMO_API_KEY" --api-secret="$AMO_API_SECRET" -s dist --channel unlisted && npm run ts-node -- tools/uploadNightly.ts

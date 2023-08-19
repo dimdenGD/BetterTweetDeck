@@ -11,22 +11,21 @@ import {sendMessageToBackground} from './helpers/webExtensionHelpers';
 import {processDownloadMediaRequest} from './services/backgroundGifRequests';
 import {getValidatedSettings} from './services/backgroundSettings';
 import {injectInTD} from './services/injectInTD';
-import {rollbackToLegacy} from './services/rollbackToLegacy';
 import {setupBTDNotifications} from './services/setupBTDNotifications';
 import {setupBtdRoot} from './services/setupBTDRoot';
 import {BTDMessageOriginsEnum, BTDMessages} from './types/btdMessageTypes';
 
 (async () => {
-  const hasNewTweetDeck = document.querySelectorAll('script[src*="tweetdeck-web"]').length === 0;
+  // const hasNewTweetDeck = document.querySelectorAll('script[src*="tweetdeck-web"]').length === 0;
 
-  if (hasNewTweetDeck) {
-    console.debug('Better TweetDeck aborted loading on TweetDeck Preview');
-    if (localStorage.getItem('STOP_ROLLBACK_TO_LEGACY') === 'true') {
-      return;
-    }
-    rollbackToLegacy();
-    return;
-  }
+  // if (hasNewTweetDeck) {
+  //   console.debug('Better TweetDeck aborted loading on TweetDeck Preview');
+  //   if (localStorage.getItem('STOP_ROLLBACK_TO_LEGACY') === 'true') {
+  //     return;
+  //   }
+  //   rollbackToLegacy();
+  //   return;
+  // }
 
   // Inject some scripts.
   injectInTD();

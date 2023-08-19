@@ -72,9 +72,9 @@ browser.storage.onChanged.addListener(async (changes) => {
 });
 
 browser.runtime.onMessage.addListener(async (request: BTDMessageEvent, sender) => {
-  if (sender.url !== 'https://tweetdeck.twitter.com/') {
-    throw new Error('Message not coming from BTD');
-  }
+  // if (sender.url !== 'https://tweetdeck.twitter.com/') {
+  //   throw new Error('Message not coming from BTD');
+  // }
 
   switch (request.data.name) {
     case BTDMessages.OPEN_SETTINGS: {

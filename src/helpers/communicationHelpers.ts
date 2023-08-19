@@ -13,7 +13,7 @@ const ORIGIN_BETTER_TW = 'https://better.tw';
 
 export function isMessageEventAllowed(ev: MessageEvent) {
   const {origin, data} = ev;
-  const allowedOrigins = [ORIGIN_TWEETDECK, ORIGIN_BETTER_TW];
+  const allowedOrigins = [ORIGIN_TWEETDECK, ORIGIN_BETTER_TW, 'https://tweetdeck.dimden.dev'];
 
   if (!allowedOrigins.includes(origin)) {
     return false;
@@ -74,7 +74,7 @@ export function listenToInternalBTDMessage(
         requestId: data.requestId,
         isReponse: true,
       } as BTDMessageEventData,
-      ORIGIN_TWEETDECK
+      '*'
     );
   };
 
@@ -114,7 +114,7 @@ export function sendInternalBTDMessage(msg: Omit<BTDMessageEventData, 'requestId
         ...msg,
         requestId,
       } as BTDMessageEventData,
-      ORIGIN_TWEETDECK
+      '*'
     );
   });
 }

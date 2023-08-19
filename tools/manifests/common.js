@@ -26,9 +26,10 @@ module.exports = {
   icons,
   content_scripts: [
     {
-      matches: ['*://tweetdeck.twitter.com/*'],
+      matches: ['*://tweetdeck.twitter.com/*', '*://tweetdeck.dimden.dev/*'],
       js: ['build/content.js'],
       run_at: 'document_end',
+      all_frames: true,
     },
   ],
   background: {

@@ -28,7 +28,7 @@ module.exports = {
     {
       matches: ['*://tweetdeck.twitter.com/*', '*://tweetdeck.dimden.dev/*'],
       js: ['build/content.js'],
-      run_at: 'document_end',
+      run_at: 'document_idle',
       all_frames: true,
     },
   ],

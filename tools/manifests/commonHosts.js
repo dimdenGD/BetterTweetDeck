@@ -7,5 +7,6 @@ const commonConnectHosts = (exports.commonConnectHosts = [
 exports.commonHosts = [
   '*://tweetdeck.twitter.com/*',
   '*://tweetdeck.dimden.dev/*',
+  '*://twitter.com/i/tweetdeck',
   ...commonConnectHosts.map((h) => `${h}/*`),
 ];

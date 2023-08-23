@@ -13,7 +13,12 @@ const ORIGIN_BETTER_TW = 'https://better.tw';
 
 export function isMessageEventAllowed(ev: MessageEvent) {
   const {origin, data} = ev;
-  const allowedOrigins = [ORIGIN_TWEETDECK, ORIGIN_BETTER_TW, 'https://tweetdeck.dimden.dev'];
+  const allowedOrigins = [
+    ORIGIN_TWEETDECK,
+    ORIGIN_BETTER_TW,
+    'https://tweetdeck.dimden.dev',
+    'https://twitter.com',
+  ];
 
   if (!allowedOrigins.includes(origin)) {
     return false;

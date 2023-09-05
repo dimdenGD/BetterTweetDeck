@@ -67,8 +67,6 @@ import {TweetDeckControllerClient, TweetDeckObject} from './types/tweetdeckTypes
 declare global {
   interface Window {
     TD: unknown;
-    mRdebug: unknown;
-    webpackJsonp: unknown;
   }
 }
 
@@ -99,7 +97,11 @@ const announcementPromptKey = 'btd-announcement-banner-version';
     await new Promise<void>((resolve) => {
       let counter = 0;
       let int = setInterval(() => {
-        if (counter++ > 50) return;
+        if (counter++ > 50) {
+          clearInterval(int);
+          resolve();
+          return;
+        }
         try {
           mR = new ModuleRaid();
           jq = mR.findConstructor('jQuery') && mR.findConstructor('jquery:')[0][1];

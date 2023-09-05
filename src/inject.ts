@@ -67,20 +67,24 @@ import {TweetDeckControllerClient, TweetDeckObject} from './types/tweetdeckTypes
 declare global {
   interface Window {
     TD: unknown;
+    mRdebug: unknown;
+    webpackJsonp: unknown;
   }
 }
 
 let mR: ModuleRaid | undefined;
+let loadFucked = false;
 try {
   mR = new ModuleRaid();
 } catch (e) {
   console.log(ModuleRaid);
   console.error(e);
+  loadFucked = true;
 }
 
-const TD = window.TD as TweetDeckObject;
+let TD = window.TD as TweetDeckObject;
 // Grab TweetDeck's jQuery from webpack
-const jq = mR && mR.findConstructor('jQuery') && mR.findConstructor('jquery:')[0][1];
+let jq = mR && mR.findConstructor('jQuery') && mR.findConstructor('jquery:')[0][1];
 
 function isModulejQuery(mod: ModuleLike | undefined): mod is JQueryStatic {
   return hasProperty(mod, 'Animation');
@@ -91,6 +95,28 @@ const updatePromptKey = 'btd-update-banner-version';
 const announcementPromptKey = 'btd-announcement-banner-version';
 
 (async () => {
+  if (loadFucked) {
+    await new Promise<void>((resolve) => {
+      let counter = 0;
+      let int = setInterval(() => {
+        if (counter++ > 50) return;
+        try {
+          mR = new ModuleRaid();
+          jq = mR.findConstructor('jQuery') && mR.findConstructor('jquery:')[0][1];
+          TD = window.TD as TweetDeckObject;
+          if (jq) {
+            console.log('successfully revived moduleraid!', mR, jq, TD);
+            clearInterval(int);
+            resolve();
+          } else {
+            throw ['still not', mR, jq];
+          }
+        } catch (e) {
+          console.error(`attempt to revive moduleraid failed`, e);
+        }
+      }, 50);
+    });
+  }
   const settings = getBTDSettings();
   if (!settings || !isModulejQuery(jq) || !isObject(TD) || !mR) {
     return;

@@ -97,7 +97,7 @@ const announcementPromptKey = 'btd-announcement-banner-version';
     await new Promise<void>((resolve) => {
       let counter = 0;
       let int = setInterval(() => {
-        if (counter++ > 50) {
+        if (counter++ > 1000) {
           clearInterval(int);
           resolve();
           return;
@@ -116,7 +116,7 @@ const announcementPromptKey = 'btd-announcement-banner-version';
         } catch (e) {
           console.error(`attempt to revive moduleraid failed`, e);
         }
-      }, 50);
+      }, 100);
     });
   }
   const settings = getBTDSettings();

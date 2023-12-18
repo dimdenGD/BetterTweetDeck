@@ -125,7 +125,7 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
     : baseText.slice(0, textLimitWithLink) + suffix;
 
   const tabs = await browser.tabs.query({
-    url: '*://tweetdeck.twitter.com/*',
+    url: '*://twitter.com/i/tweetdeck*',
   });
 
   if (tabs.length === 0) {

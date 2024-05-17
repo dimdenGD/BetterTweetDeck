@@ -30,6 +30,7 @@ module.exports = {
         '*://tweetdeck.twitter.com/*',
         '*://tweetdeck.dimden.dev/*',
         'https://twitter.com/i/tweetdeck',
+        'https://x.com/i/tweetdeck',
       ],
       js: ['build/content.js'],
       run_at: 'document_idle',

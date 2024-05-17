@@ -18,6 +18,7 @@ export function isMessageEventAllowed(ev: MessageEvent) {
     ORIGIN_BETTER_TW,
     'https://tweetdeck.dimden.dev',
     'https://twitter.com',
+    'https://x.com',
   ];
 
   if (!allowedOrigins.includes(origin)) {

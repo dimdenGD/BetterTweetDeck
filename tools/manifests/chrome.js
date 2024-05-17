@@ -17,11 +17,21 @@ module.exports = {
   web_accessible_resources: [
     {
       resources: common.web_accessible_resources,
-      matches: ['*://tweetdeck.twitter.com/*', '*://tweetdeck.dimden.dev/*', '*://twitter.com/*'],
+      matches: [
+        '*://tweetdeck.twitter.com/*',
+        '*://tweetdeck.dimden.dev/*',
+        '*://twitter.com/*',
+        '*://x.com/*',
+      ],
     },
   ],
   externally_connectable: {
-    matches: ['*://tweetdeck.twitter.com/*', '*://tweetdeck.dimden.dev/*', '*://twitter.com/*'],
+    matches: [
+      '*://tweetdeck.twitter.com/*',
+      '*://tweetdeck.dimden.dev/*',
+      '*://twitter.com/*',
+      '*://x.com/*',
+    ],
   },
   browser_action: undefined,
   action: undefined,

@@ -8,5 +8,6 @@ exports.commonHosts = [
   '*://tweetdeck.twitter.com/*',
   '*://tweetdeck.dimden.dev/*',
   '*://twitter.com/i/tweetdeck',
+  '*://x.com/i/tweetdeck',
   ...commonConnectHosts.map((h) => `${h}/*`),
 ];

@@ -211,7 +211,7 @@ const Notifications = () => {
         actions: {
           dismissLabel: 'Got it',
           actionLabel: 'See changes',
-          href: `https://github.com/eramdam/BetterTweetDeck/releases/tag/${getExtensionVersion()}`,
+          href: `https://github.com/dimdenGD/BetterTweetDeck/releases/tag/${getExtensionVersion()}`,
         },
         icon: <Icon.Bell />,
       };
